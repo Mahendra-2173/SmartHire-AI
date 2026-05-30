@@ -20,7 +20,7 @@ const Header = () => {
           </div>
           <div className="flex items-baseline gap-2">
             <span className="text-white text-[17px] font-bold tracking-tight leading-none">
-              PerfectFit
+              SmartHire AI
             </span>
             <span className="text-[9px] font-semibold tracking-[0.18em] text-violet-400 bg-violet-400/10 border border-violet-400/20 rounded-full px-2 py-0.5 uppercase leading-none">
               Gen AI

@@ -1,4 +1,12 @@
-# ✦ PerfectFit AI
+# ✦ SmartHire AI AI
+
+Built and customized by Mahendra
+
+AI-powered interview preparation platform that analyzes resumes against job descriptions and generates:
+- Match Score
+- Technical Questions
+- Skills Gap Analysis
+- Personalized Prep Plan
 
 > **AI-powered interview preparation platform** — upload your resume, paste a job description, and get a personalized report with match score, interview questions, skills gap analysis, and a day-by-day prep plan. Powered by Gemini AI and built on the MERN stack.
 
@@ -6,7 +14,7 @@
 
 ## 🚀 What It Does
 
-PerfectFit AI analyzes your resume against any job description and generates:
+SmartHire AI AI analyzes your resume against any job description and generates:
 
 - **Match Score** — how well your profile fits the role (0–100)
 - **Technical Questions** — role-specific questions the interviewer might ask, with suggested answers
@@ -32,7 +40,7 @@ PerfectFit AI analyzes your resume against any job description and generates:
 ## 📁 Project Structure
 
 ```
-PerfectFit-AI/
+SmartHire AI-AI/
 ├── backend/          # Express API server
 │   ├── src/
 │   │   ├── controllers/
@@ -67,8 +75,8 @@ Make sure you have these installed before starting:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/PerfectFit-AI.git
-cd PerfectFit-AI
+git clone https://github.com/your-username/SmartHire AI-AI.git
+cd SmartHire AI-AI
 ```
 
 ---

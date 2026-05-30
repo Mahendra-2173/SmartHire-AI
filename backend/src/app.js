@@ -25,6 +25,6 @@ app.use("/api/auth", authRouter);
 app.use("/api/interviewreport", reportRounter);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the PerfectFit-AI backend!");
+  res.send("Welcome to the SmartHire AI-AI backend!");
 });
 module.exports = app;

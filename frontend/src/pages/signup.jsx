@@ -56,7 +56,7 @@ const SignUp = () => {
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-white text-2xl font-bold tracking-tight">
-                PerfectFit
+                SmartHire AI
               </span>
               <span className="text-[10px] font-semibold tracking-[0.15em] text-violet-400 bg-violet-400/10 border border-violet-400/20 rounded-full px-2 py-0.5 uppercase">
                 Gen AI
@@ -70,7 +70,7 @@ const SignUp = () => {
               Create account
             </h1>
             <p className="text-white/40 text-[15px]">
-              Join PerfectFit and get started today
+              Join SmartHire AI and get started today
             </p>
           </div>
 

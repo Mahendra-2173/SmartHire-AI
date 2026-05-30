@@ -1,5 +1,7 @@
 const { GoogleGenAI } = require("@google/genai");
 
+console.log("Gemini Key:", process.env.GEMINI_API_KEY);
+
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 // Fix flat array like ["question", "Q1", "intention", "I1", "answer", "A1"]
@@ -181,7 +183,7 @@ Generate the actual report now for the candidate above. Same structure, differen
       console.log(`Attempt ${attempt}/${MAX_RETRIES}`);
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.1-pro-preview",
+        model: "gemini-2.5-flash",
         contents: prompt,
         config: {
           responseMimeType: "application/json", // keep this — still helps even if schema is ignored
