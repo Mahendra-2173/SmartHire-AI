@@ -1,22 +1,16 @@
-const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const blacklistTokenModel = require("../models/blacklistToken.model");
 
 const authMiddleware = async (req, res, next) => {
-  console.log("Headers Cookie:", req.headers.cookie);
-  console.log("Cookies:", req.cookies);
-  const token = req.cookies.token;
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(" ")[1];
 
-  console.log("Token:", token);
-console.log("JWT_SECRET exists:", !!process.env.JWT_SECRET);
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {
-    const blacklistedToken = await blacklistTokenModel.findOne({
-      token,
-    });
+    const blacklistedToken = await blacklistTokenModel.findOne({ token });
     if (blacklistedToken) {
       return res.status(401).json({ message: "Unauthorized" });
     }

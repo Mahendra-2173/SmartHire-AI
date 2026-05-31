@@ -33,14 +33,7 @@ const registerUser = async (req, res) => {
     expiresIn: "1D",
   });
 
- res.cookie("token", token, {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none",
-  maxAge: 24 * 60 * 60 * 1000,
-});
-
-  res.status(201).json({ message: "User registered successfully", user });
+res.status(201).json({ message: "User registered successfully", user,token});
 };
 
 /**
@@ -71,14 +64,7 @@ const loginUser = async (req, res) => {
     expiresIn: "1d",
   });
 
- res.cookie("token", token, {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none",
-  maxAge: 24 * 60 * 60 * 1000,
-});
-
-  res.status(200).json({ message: "User logged in successfully", user });
+ res.status(200).json({ message: "User logged in successfully", user, token });
 };
 
 /**
@@ -89,15 +75,11 @@ const loginUser = async (req, res) => {
  *
  */
 const logoutUser = async (req, res) => {
-  const token = req.cookies.token;
-  if (token) {
-    await blacklistTokenmodel.create({ token });
-  }
-  res.clearCookie("token", {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none",
-});
+  const authHeader = req.headers.authorization;
+const token = authHeader && authHeader.split(" ")[1];
+if (token) {
+  await blacklistTokenmodel.create({ token });
+}
   res.status(200).json({ message: "User logged out successfully" });
 };
 
