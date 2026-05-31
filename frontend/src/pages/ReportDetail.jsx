@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import jsPDF from "jspdf";
 import { useNavigate } from "react-router";
 import { useReport } from "../hooks/useReport";
 import Header from "../components/Header";
@@ -173,6 +174,20 @@ const ReportDetail = () => {
   const navigate = useNavigate();
   const { currentReport } = useReport();
   const report = currentReport;
+
+  const downloadPDF = () => {
+  const doc = new jsPDF();
+
+  doc.setFontSize(20);
+  doc.text("SmartHire AI Report", 20, 20);
+
+  doc.setFontSize(12);
+  doc.text(`Job Title: ${report.job_title}`, 20, 40);
+  doc.text(`Match Score: ${report.match_score}/100`, 20, 50);
+  doc.text(`ATS Score: ${atsScore}/100`, 20, 60);
+
+  doc.save("SmartHire_Report.pdf");
+};
 
   const atsScore =
   report?.match_score >= 85
@@ -414,6 +429,14 @@ const ReportDetail = () => {
           </div>
 
           <div className="mt-8 text-center">
+
+            <button
+  onClick={downloadPDF}
+  className="mr-3 px-8 py-3.5 rounded-xl bg-emerald-600 text-white font-semibold text-sm"
+>
+  Download PDF
+</button>
+
             <button
               onClick={() => navigate("/")}
               className="relative group overflow-hidden px-8 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-sm shadow-xl shadow-violet-600/30 hover:shadow-violet-600/50 hover:-translate-y-0.5 transition-all duration-200"
