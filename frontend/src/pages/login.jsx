@@ -210,10 +210,11 @@ const Login = () => {
           </div>
 
           {/* ── Create Account ── */}
-          <a
-            href="#"
-            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl border border-white/[0.1] hover:border-violet-500/50 hover:bg-violet-500/[0.06] text-white/50 hover:text-white text-[14px] font-medium transition-all duration-200 group"
-          >
+         <button
+  type="button"
+  onClick={() => navigate("/register")}
+  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl border border-white/[0.1] hover:border-violet-500/50 hover:bg-violet-500/[0.06] text-white/50 hover:text-white text-[14px] font-medium transition-all duration-200 group"
+>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-4 h-4 group-hover:text-violet-400 transition-colors"
@@ -230,7 +231,7 @@ const Login = () => {
               <line x1="22" y1="11" x2="16" y2="11" />
             </svg>
             Create a new account
-          </a>
+          </button>
         </div>
       </div>
     </div>
