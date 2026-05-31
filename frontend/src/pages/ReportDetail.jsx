@@ -183,9 +183,10 @@ const ReportDetail = () => {
 
   doc.setFontSize(12);
   doc.text(`Job Title: ${report.job_title}`, 20, 40);
-  doc.text(`Match Score: ${report.match_score}/100`, 20, 50);
-  doc.text(`ATS Score: ${atsScore}/100`, 20, 60);
-  doc.text("Skills Gap:", 20, 80);
+  doc.text(`Target Company: ${report.company || "Not Specified"}`, 20, 50);
+  doc.text(`Match Score: ${report.match_score}/100`, 20, 60);
+  doc.text(`ATS Score: ${atsScore}/100`, 20, 70);
+  doc.text("Skills Gap:", 20, 90);
 
   if (report.skills_gap) {
   report.skills_gap.forEach((skill, index) => {
@@ -193,15 +194,53 @@ const ReportDetail = () => {
   `• ${skill.skill}`,
   160
 );
-
-doc.text(splitText, 25, 90 + index * 15);
+doc.text(splitText, 25, 100 + index * 15);
   });
 }
+
+let y = 100 + report.skills_gap.length * 15 + 20;
+
+doc.text("Technical Questions:", 20, y);
+
+report.technical_question?.forEach((q, index) => {
+  const question = doc.splitTextToSize(
+    `${index + 1}. ${q.question}`,
+    160
+  );
+
+  y += 10;
+  doc.text(question, 25, y);
+
+  y += question.length * 5;
+});
+
+y += 15;
+if (y > 250) {
+  doc.addPage();
+  y = 20;
+}
+
+doc.text("Behavioral Questions:", 20, y);
+
+report.behavioral_question?.forEach((q, index) => {
+  const question = doc.splitTextToSize(
+    `${index + 1}. ${q.question}`,
+    160
+  );
+
+  y += 10;
+  doc.text(question, 25, y);
+
+  y += question.length * 5;
+});
+
+
 
 
 
   doc.save("SmartHire_Report.pdf");
 };
+
 
   const atsScore =
   report?.match_score >= 85
