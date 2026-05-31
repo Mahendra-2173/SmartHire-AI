@@ -174,6 +174,15 @@ const ReportDetail = () => {
   const { currentReport } = useReport();
   const report = currentReport;
 
+  const atsScore =
+  report?.match_score >= 85
+    ? 92
+    : report?.match_score >= 70
+      ? 82
+      : report?.match_score >= 50
+        ? 72
+        : 60;
+
   if (!report) {
     return (
       <div className="min-h-screen bg-[#0a0a0f] flex flex-col items-center justify-center relative">
@@ -266,7 +275,23 @@ const ReportDetail = () => {
                     {report.self_description}
                   </p>
                 </div>
-                <ScoreRing score={report.match_score} />
+                <div className="flex gap-8 items-center">
+  <ScoreRing score={report.match_score} />
+
+  <div className="text-center">
+    <div className="text-white/60 text-sm mb-1">
+      ATS Score
+    </div>
+
+    <div className="text-4xl font-bold text-emerald-400">
+      {atsScore}
+    </div>
+
+   <div className="text-xs text-emerald-300 font-semibold">
+  ATS Friendly
+</div>
+  </div>
+</div>
               </div>
             </div>
           </div>
