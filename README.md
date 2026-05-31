@@ -1,4 +1,4 @@
-# ✦ SmartHire AI AI
+# ✦ SmartHire AI 
 
 Built and customized by Mahendra
 
@@ -21,6 +21,10 @@ SmartHire AI AI analyzes your resume against any job description and generates:
 - **Behavioral Questions** — STAR-method guided questions with coaching tips
 - **Skills Gap Analysis** — missing or weak skills ranked by severity (low / medium / high)
 - **5-Day Prep Plan** — a personalized day-by-day action plan to get interview-ready
+- **ATS Score Analysis** – evaluates resume ATS compatibility and keyword optimization
+- **PDF Report Export** – download interview reports as PDF documents
+- **MongoDB Atlas Storage** – securely stores user accounts and generated reports
+- **JWT Authentication** – protected user login and registration system
 
 ---
 
