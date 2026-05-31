@@ -3,16 +3,21 @@ import { toast } from "react-toastify";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: true,
+});
+
+// Automatically attach token to every request
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 });
 
 export const register = async ({ name, email, password }) => {
   try {
-    const response = await api.post("/api/auth/register", {
-      name,
-      email,
-      password,
-    });
+    const response = await api.post("/api/auth/register", { name, email, password });
+    localStorage.setItem("token", response.data.token);
     return response.data;
   } catch (error) {
     toast.error(error.response?.data?.message || "Registration failed");
@@ -23,6 +28,7 @@ export const register = async ({ name, email, password }) => {
 export const login = async ({ email, password }) => {
   try {
     const response = await api.post("/api/auth/login", { email, password });
+    localStorage.setItem("token", response.data.token);
     return response.data;
   } catch (error) {
     toast.error(error.response?.data?.message || "Login failed");
@@ -33,6 +39,7 @@ export const login = async ({ email, password }) => {
 export const logout = async () => {
   try {
     await api.post("/api/auth/logout");
+    localStorage.removeItem("token");
   } catch (error) {
     toast.error(error.response?.data?.message || "Logout failed");
     throw error;
@@ -45,9 +52,7 @@ export const getMe = async () => {
     return response.data;
   } catch (error) {
     if (error.response?.status !== 401) {
-      toast.error(
-        error.response?.data?.message || "Failed to fetch user data"
-      );
+      toast.error(error.response?.data?.message || "Failed to fetch user data");
     }
     throw error;
   }
