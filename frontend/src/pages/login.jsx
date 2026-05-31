@@ -212,7 +212,7 @@ const Login = () => {
           {/* ── Create Account ── */}
          <button
   type="button"
-  onClick={() => navigate("/register")}
+  onClick={() => navigate("/signup")}
   className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl border border-white/[0.1] hover:border-violet-500/50 hover:bg-violet-500/[0.06] text-white/50 hover:text-white text-[14px] font-medium transition-all duration-200 group"
 >
             <svg
