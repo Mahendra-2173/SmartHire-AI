@@ -5,6 +5,9 @@ const blacklistTokenModel = require("../models/blacklistToken.model");
 const authMiddleware = async (req, res, next) => {
   console.log("Cookies:", req.cookies);
   const token = req.cookies.token;
+
+  console.log("Token:", token);
+console.log("JWT_SECRET exists:", !!process.env.JWT_SECRET);
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
   }
