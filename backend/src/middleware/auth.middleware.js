@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const blacklistTokenModel = require("../models/blacklistToken.model");
 
 const authMiddleware = async (req, res, next) => {
+  console.log("Headers Cookie:", req.headers.cookie);
   console.log("Cookies:", req.cookies);
   const token = req.cookies.token;
 
