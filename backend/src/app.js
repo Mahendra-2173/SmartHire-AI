@@ -6,6 +6,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 
 const app = express();
+app.set("trust proxy", 1);
 app.use(morgan("tiny"));
 
 app.use(express.json());
