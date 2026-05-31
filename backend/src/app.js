@@ -12,9 +12,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [
+  origin: [
   "http://localhost:5173",
-  "https://your-vercel-app.vercel.app"
+  "https://smart-hire-ai-rust.vercel.app"
 ],
     credentials: true,
   }),
