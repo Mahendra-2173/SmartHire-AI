@@ -94,10 +94,21 @@ const generateInterviewReport = async ({
   resume_text,
   self_description,
   job_title,
+  company,
   job_description,
 }) => {
   const prompt = `
 You are an expert interview coach and career advisor.
+
+If a Target Company is provided, tailor the interview questions to that company's interview style.
+
+Examples:
+- Amazon → Leadership Principles + practical problem solving
+- Google → DSA, problem solving, system design
+- Microsoft → coding + behavioral collaboration
+- TCS/Infosys/Accenture → aptitude, fundamentals, HR questions
+
+Generate questions that resemble what candidates may encounter at the target company.
 
 Analyze the following resume and job description and generate a detailed interview report.
 
@@ -109,6 +120,9 @@ ${self_description}
 
 Job Title:
 ${job_title}
+
+Target Company:
+${company ||"Not Specified"}
 
 Job Description:
 ${job_description}

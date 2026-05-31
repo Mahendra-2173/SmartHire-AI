@@ -8,7 +8,7 @@ const generateReport = async (req, res) => {
       return res.status(400).json({ message: "Resume PDF is required" });
     }
 
-    const { self_description, job_title, job_description } = req.body;
+    const { self_description, job_title,company, job_description } = req.body;
 
     if (!self_description || !job_title || !job_description) {
       return res.status(400).json({ message: "All fields are required" });
@@ -30,6 +30,7 @@ const generateReport = async (req, res) => {
       resume_text,
       self_description,
       job_title,
+      company,
       job_description,
     });
     console.log("Generated Report:", report); // Debugging line to see the generated report
@@ -39,6 +40,7 @@ const generateReport = async (req, res) => {
       resume_text,
       self_description,
       job_title,
+      company,
       job_description,
       technical_question: report.technical_question,
       behavioral_question: report.behavioral_question,

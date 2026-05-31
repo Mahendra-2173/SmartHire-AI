@@ -6,6 +6,7 @@ const ReportForm = ({ onSubmit, loading }) => {
   const [dragging, setDragging] = useState(false);
   const [form, setForm] = useState({
     job_title: "",
+    company: "",
     job_description: "",
     self_description: "",
   });
@@ -30,6 +31,7 @@ const ReportForm = ({ onSubmit, loading }) => {
     const formData = new FormData();
     formData.append("resume", file);
     formData.append("job_title", form.job_title);
+    formData.append("company", form.company);
     formData.append("job_description", form.job_description);
     formData.append("self_description", form.self_description);
 
@@ -172,6 +174,18 @@ const ReportForm = ({ onSubmit, loading }) => {
               className={inputClass}
             />
           </div>
+
+          <div className="group">
+  <label className={labelClass}>Target Company</label>
+  <input
+    type="text"
+    name="company"
+    placeholder="e.g. Google, Amazon, Microsoft"
+    value={form.company}
+    onChange={handleChange}
+    className={inputClass}
+  />
+</div>
 
           <div className="group">
             <label className={labelClass}>Job Description</label>
