@@ -33,10 +33,11 @@ const registerUser = async (req, res) => {
     expiresIn: "1D",
   });
 
-  res.cookie("token", token, {
+ res.cookie("token", token, {
   httpOnly: true,
-  secure: false,
-  sameSite: "lax",
+  secure: true,
+  sameSite: "none",
+  maxAge: 24 * 60 * 60 * 1000,
 });
 
   res.status(201).json({ message: "User registered successfully", user });
@@ -92,7 +93,11 @@ const logoutUser = async (req, res) => {
   if (token) {
     await blacklistTokenmodel.create({ token });
   }
-  res.clearCookie("token");
+  res.clearCookie("token", {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+});
   res.status(200).json({ message: "User logged out successfully" });
 };
 
