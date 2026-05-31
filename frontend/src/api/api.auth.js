@@ -1,16 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-});
+const api = axios.create({ baseURL: import.meta.env.VITE_API_URL });
 
-// Automatically attach token to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
@@ -51,9 +46,8 @@ export const getMe = async () => {
     const response = await api.get("/api/auth/getme");
     return response.data;
   } catch (error) {
-    if (error.response?.status !== 401) {
+    if (error.response?.status !== 401)
       toast.error(error.response?.data?.message || "Failed to fetch user data");
-    }
     throw error;
   }
 };
