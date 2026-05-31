@@ -1,8 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { logout } from "../api/api.auth";
 
 const Header = () => {
   const navigate = useNavigate();
+  const handleLogout = async () => {
+  try {
+    await logout();
+    navigate("/login");
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <header className="w-full relative z-50">
@@ -36,6 +45,12 @@ const Header = () => {
           >
             My Reports
           </button>
+          <button
+  onClick={handleLogout}
+  className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors"
+>
+  Logout
+</button>
 
           <div className="h-4 w-px bg-white/[0.08]" />
 

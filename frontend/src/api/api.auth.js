@@ -32,7 +32,7 @@ export const login = async ({ email, password }) => {
 
 export const logout = async () => {
   try {
-    await api.get("/api/auth/logout");
+    await api.post("/api/auth/logout");
   } catch (error) {
     toast.error(error.response?.data?.message || "Logout failed");
     throw error;
@@ -44,7 +44,11 @@ export const getMe = async () => {
     const response = await api.get("/api/auth/getme");
     return response.data;
   } catch (error) {
-    toast.error(error.response?.data?.message || "Failed to fetch user data");
+    if (error.response?.status !== 401) {
+      toast.error(
+        error.response?.data?.message || "Failed to fetch user data"
+      );
+    }
     throw error;
   }
 };
