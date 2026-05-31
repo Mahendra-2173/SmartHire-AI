@@ -185,6 +185,20 @@ const ReportDetail = () => {
   doc.text(`Job Title: ${report.job_title}`, 20, 40);
   doc.text(`Match Score: ${report.match_score}/100`, 20, 50);
   doc.text(`ATS Score: ${atsScore}/100`, 20, 60);
+  doc.text("Skills Gap:", 20, 80);
+
+  if (report.skills_gap) {
+  report.skills_gap.forEach((skill, index) => {
+    const splitText = doc.splitTextToSize(
+  `• ${skill.skill}`,
+  160
+);
+
+doc.text(splitText, 25, 90 + index * 15);
+  });
+}
+
+
 
   doc.save("SmartHire_Report.pdf");
 };
