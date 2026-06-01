@@ -28,9 +28,9 @@ const Header = () => {
             ✦
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-white text-[17px] font-bold tracking-tight leading-none">
-              SmartHire AI
-            </span>
+           <span className="text-white text-[14px] sm:text-[17px] font-bold tracking-tight leading-none">
+  SmartHire AI
+</span>
             <span className="text-[9px] font-semibold tracking-[0.18em] text-violet-400 bg-violet-400/10 border border-violet-400/20 rounded-full px-2 py-0.5 uppercase leading-none">
               Gen AI
             </span>
@@ -38,13 +38,13 @@ const Header = () => {
         </div>
 
         {/* Right — Nav + status */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2 sm:gap-6">
           <button
-            onClick={() => navigate("/my-reports")}
-            className="text-white/40 hover:text-white text-sm font-medium transition-colors"
-          >
-            My Reports
-          </button>
+  onClick={() => navigate("/my-reports")}
+  className="text-white/40 hover:text-white text-xs sm:text-sm font-medium transition-colors"
+>
+  My Reports
+</button>
           <button
   onClick={handleLogout}
   className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors"
@@ -56,9 +56,9 @@ const Header = () => {
 
           <div className="flex items-center gap-1.5">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/60 animate-pulse" />
-            <span className="text-[11px] text-white/30 font-medium tracking-wide">
-              AI Ready
-            </span>
+            <span className="hidden sm:block text-[11px] text-white/30 font-medium tracking-wide">
+  AI Ready
+</span>
           </div>
         </div>
       </div>
