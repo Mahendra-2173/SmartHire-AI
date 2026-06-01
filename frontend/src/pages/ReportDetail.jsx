@@ -39,7 +39,7 @@ const ScoreRing = ({ score }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative w-36 h-36 flex items-center justify-center">
+      <div className="relative w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center">
         <svg className="absolute inset-0 -rotate-90" width="144" height="144">
           <circle
             cx="72"
@@ -66,7 +66,7 @@ const ScoreRing = ({ score }) => {
           />
         </svg>
         <div className="text-center relative z-10">
-          <div className="text-4xl font-bold text-white">{score}</div>
+          <div className="text-3xl sm:text-4xl font-bold text-white">{score}</div>
           <div className="text-[11px] text-white/30 mt-0.5">/ 100</div>
         </div>
       </div>
@@ -93,7 +93,7 @@ const QuestionCard = ({ item, index, accentColor }) => {
   const c = accents[accentColor] || accents.violet;
 
   return (
-    <div className="bg-white/[0.04] hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.14] rounded-2xl p-5 transition-all duration-200">
+    <div className="bg-white/[0.04] hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.14] rounded-2xl p-3 sm:p-5 transition-all duration-200">
       <div className="flex items-start gap-3">
         <span
           className={`text-[11px] font-bold px-2.5 py-1 rounded-lg ${c.num} flex-shrink-0 mt-0.5`}
@@ -327,7 +327,7 @@ report.behavioral_question?.forEach((q, index) => {
           {/* Hero card */}
           <div className="relative mb-6">
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-600/30 to-indigo-600/20 blur-2xl scale-105 -z-10" />
-            <div className="bg-white/[0.06] backdrop-blur-2xl border border-white/[0.12] rounded-3xl px-8 py-7 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
+            <div className="bg-white/[0.06] backdrop-blur-2xl border border-white/[0.12] rounded-3xl px-4 sm:px-8 py-5 sm:py-7 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
@@ -336,14 +336,14 @@ report.behavioral_question?.forEach((q, index) => {
                       {date}
                     </span>
                   </div>
-                  <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-2">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight mb-2 break-words">
                     {report.job_title}
                   </h1>
                   <p className="text-white/35 text-[14px] leading-relaxed max-w-xl">
                     {report.self_description}
                   </p>
                 </div>
-                <div className="flex gap-8 items-center">
+                <div className="flex flex-col sm:flex-row gap-6 items-center">
   <ScoreRing score={report.match_score} />
 
   <div className="text-center">
@@ -367,7 +367,7 @@ report.behavioral_question?.forEach((q, index) => {
           {/* Main grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             <div className="lg:col-span-2 space-y-5">
-              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6">
+              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p4 sm:p-6">
                 <SectionTitle
                   icon="⚙️"
                   title="Technical Questions"
@@ -385,7 +385,7 @@ report.behavioral_question?.forEach((q, index) => {
                 </div>
               </div>
 
-              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6">
+              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p4 sm:p-6">
                 <SectionTitle
                   icon="🧠"
                   title="Behavioral Questions"
@@ -405,7 +405,7 @@ report.behavioral_question?.forEach((q, index) => {
             </div>
 
             <div className="space-y-5">
-              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5">
+              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p3 sm:p-5">
                 <SectionTitle
                   icon="📊"
                   title="Skills Gap"
@@ -424,7 +424,7 @@ report.behavioral_question?.forEach((q, index) => {
                           <div
                             className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${s.dot}`}
                           />
-                          <span className="text-white/70 text-[13px] truncate">
+                          <span className="text-white/70 text-[12px] sm:text-[13px] break-words">
                             {item.skill}
                           </span>
                         </div>
@@ -439,7 +439,7 @@ report.behavioral_question?.forEach((q, index) => {
                 </div>
               </div>
 
-              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5">
+              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-3 sm:p-5">
                 <SectionTitle
                   icon="📅"
                   title="Prep Plan"
@@ -481,18 +481,18 @@ report.behavioral_question?.forEach((q, index) => {
             </div>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
 
             <button
   onClick={downloadPDF}
-  className="mr-3 px-8 py-3.5 rounded-xl bg-emerald-600 text-white font-semibold text-sm"
+  className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-600 text-white font-semibold text-sm"
 >
   Download PDF
 </button>
 
             <button
               onClick={() => navigate("/")}
-              className="relative group overflow-hidden px-8 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-sm shadow-xl shadow-violet-600/30 hover:shadow-violet-600/50 hover:-translate-y-0.5 transition-all duration-200"
+              className="w-full sm:w-auto relative group overflow-hidden px-6 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-sm shadow-xl shadow-violet-600/30"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative">+ Generate Another Report</span>

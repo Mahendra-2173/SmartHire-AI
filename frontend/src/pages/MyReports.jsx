@@ -81,10 +81,10 @@ const ReportCard = ({ report, onClick }) => {
                 {date}
               </span>
             </div>
-            <h3 className="text-white font-semibold text-[15px] leading-snug truncate">
+            <h3 className="text-white font-semibold text-sm sm:text-[15px] leading-snug break-words">
               {report.job_title}
             </h3>
-            <p className="text-white/35 text-[12px] mt-0.5 truncate">
+            <p className="text-white/35 text-[11px] sm:text-[12px] mt-0.5 break-words">
               {report.self_description}
             </p>
           </div>
@@ -175,7 +175,7 @@ const MyReports = () => {
 
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-white tracking-tight mb-1">
+              <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-1">
                 My Reports
               </h1>
               <p className="text-white/35 text-[15px]">
@@ -188,6 +188,7 @@ const MyReports = () => {
               onClick={() => navigate("/")}
               className="relative group overflow-hidden px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-sm shadow-lg shadow-violet-600/30 hover:shadow-violet-600/50 hover:-translate-y-0.5 transition-all duration-200"
             >
+              +
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative">+ New Report</span>
             </button>
