@@ -38,21 +38,20 @@ const ReportForm = ({ onSubmit, loading }) => {
     onSubmit(formData);
   };
 
-  const inputClass =
-    "w-full bg-white/[0.06] border border-white/[0.1] hover:border-white/20 focus:border-violet-500 focus:bg-violet-500/[0.07] focus:ring-4 focus:ring-violet-500/[0.15] rounded-xl px-4 py-3 text-white text-[15px] placeholder-white/20 outline-none transition-all duration-200";
-
+ const inputClass =
+  "w-full bg-white/[0.06] border border-white/[0.1] hover:border-white/20 focus:border-violet-500 focus:bg-violet-500/[0.07] focus:ring-4 focus:ring-violet-500/[0.15] rounded-xl px-4 py-3 text-white text-sm sm:text-[15px] placeholder-white/20 outline-none transition-all duration-200";
   const labelClass =
     "block text-[11px] font-semibold tracking-[0.12em] uppercase text-white/40 mb-2 group-focus-within:text-violet-400 transition-colors";
 
   return (
     <div className="relative w-full max-w-2xl mx-auto">
       <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-600/30 to-indigo-600/20 blur-2xl scale-105 -z-10" />
-      <div className="bg-white/[0.06] backdrop-blur-2xl border border-white/[0.12] rounded-3xl px-8 py-8 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
+      <div className="bg-white/[0.06] backdrop-blur-2xl border border-white/[0.12] rounded-3xl px-4 sm:px-8 py-5 sm:py-8 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
         <div className="mb-7">
-          <h1 className="text-3xl font-bold text-white tracking-tight mb-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-1">
             Generate Report
           </h1>
-          <p className="text-white/40 text-[15px]">
+          <p className="text-white/40 text-sm sm:text-[15px]">
             Upload your resume and fill in the details to get your AI interview
             report.
           </p>
@@ -69,7 +68,7 @@ const ReportForm = ({ onSubmit, loading }) => {
               }}
               onDragLeave={() => setDragging(false)}
               onDrop={handleDrop}
-              className={`cursor-pointer rounded-xl border-2 border-dashed transition-all duration-200 p-6 text-center ${
+             className={`cursor-pointer rounded-xl border-2 border-dashed transition-all duration-200 p-4 sm:p-6 text-center ${
                 dragging
                   ? "border-violet-500 bg-violet-500/10"
                   : file
@@ -102,7 +101,7 @@ const ReportForm = ({ onSubmit, loading }) => {
                     </svg>
                   </div>
                   <div className="text-left">
-                    <p className="text-white text-sm font-medium truncate max-w-[220px]">
+                    <p className="text-white text-xs sm:text-sm font-medium break-all max-w-[140px] sm:max-w-[220px]">
                       {file.name}
                     </p>
                     <p className="text-white/35 text-[11px]">
@@ -195,7 +194,7 @@ const ReportForm = ({ onSubmit, loading }) => {
               value={form.job_description}
               onChange={handleChange}
               required
-              rows={5}
+              rows={4}
               className={`${inputClass} resize-none`}
             />
           </div>
@@ -208,7 +207,7 @@ const ReportForm = ({ onSubmit, loading }) => {
               value={form.self_description}
               onChange={handleChange}
               required
-              rows={3}
+              rows={2}
               className={`${inputClass} resize-none`}
             />
           </div>
